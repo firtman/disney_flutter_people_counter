@@ -37,6 +37,16 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
     });
   }
 
+  Color getColor() {
+    if (count > max) {
+      return Colors.red.shade500;
+    } else if (count > max * 0.75) {
+      return Colors.yellowAccent.shade700;
+    } else {
+      return Colors.black;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     const largeFontStyle = TextStyle(fontSize: 80);
@@ -49,24 +59,24 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Center(
                 child: Text(
                   "$count",
-                  style: largeFontStyle,
+                  style: TextStyle(fontSize: 80, color: getColor()),
                 ),
               ),
               const Text(
                 "/",
                 style: largeFontStyle,
               ),
-              Flexible(
-                fit: FlexFit.tight,
-                child: TextField(
-                  onChanged: maxChanged,
-                  style: largeFontStyle,
-                ),
-              ),
+              ConstrainedBox(
+                  constraints: const BoxConstraints.tightFor(width: 120),
+                  child: TextField(
+                    onChanged: maxChanged,
+                    style: const TextStyle(fontSize: 60, color: Colors.black26),
+                  )),
             ],
           ),
           Padding(
