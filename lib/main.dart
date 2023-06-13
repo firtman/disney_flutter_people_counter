@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'people_counter_page.dart';
 
 void main() {
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 43, 23, 144)),
         useMaterial3: true,
       ),
       home: const PeopleCounterPage(),
